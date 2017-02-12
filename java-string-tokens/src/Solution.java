@@ -15,9 +15,14 @@ public class Solution {
 
     static List<String> splitStringIntoTokens(String s) {
         String regex = "[ !,?._'@]+";
-        String[] tokens = s.trim().split(regex);
+        String trimmedString = s.trim();
 
-        return Arrays.asList(tokens);
+        if (trimmedString.length() == 0) {
+            return new ArrayList<>();
+        } else {
+            String[] tokens = trimmedString.split(regex);
+            return Arrays.asList(tokens);
+        }
     }
 
     private static void printTokens(List<String> tokens) {

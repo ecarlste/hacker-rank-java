@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SolutionTest {
 
@@ -34,6 +35,14 @@ public class SolutionTest {
         List<String> actualTokens = Solution.splitStringIntoTokens(input);
 
         assertEquals(expectedTokens, actualTokens);
+    }
+
+    @Test
+    public void outputListShouldBeEmptyWhenInputIsAllSpaces() {
+        input = "                        ";
+        List<String> actualTokens = Solution.splitStringIntoTokens(input);
+
+        assertTrue(actualTokens.size() == 0);
     }
 
 }

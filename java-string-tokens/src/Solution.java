@@ -6,7 +6,9 @@ public class Solution {
         Scanner scan = new Scanner(System.in);
         String s = scan.nextLine();
 
-        splitStringIntoTokens(s);
+        List<String> tokens = splitStringIntoTokens(s);
+
+        printTokens(tokens);
 
         scan.close();
     }
@@ -17,4 +19,12 @@ public class Solution {
 
         return Arrays.asList(tokens);
     }
+
+    private static void printTokens(List<String> tokens) {
+        System.out.println(tokens.size());
+        for (String token : tokens) {
+            System.out.println(token);
+        }
+    }
+
 }

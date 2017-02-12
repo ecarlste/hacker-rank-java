@@ -15,7 +15,7 @@ public class Solution {
 
     static List<String> splitStringIntoTokens(String s) {
         String regex = "[ !,?._'@]+";
-        String[] tokens = s.split(regex);
+        String[] tokens = s.trim().split(regex);
 
         return Arrays.asList(tokens);
     }

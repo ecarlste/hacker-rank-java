@@ -1,7 +1,4 @@
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
 import java.util.regex.*;
 
 public class Solution{
@@ -12,9 +9,29 @@ public class Solution{
         while(testCases>0){
             String line = in.nextLine();
 
-            //Write your code here
+            Matcher matcher = buildXmlTagExtractionMatcher(line);
+            findAndPrintXmlElementsUsingMatcher(matcher);
 
             testCases--;
+        }
+    }
+
+    private static Matcher buildXmlTagExtractionMatcher(String line) {
+        String regex = "<(.+)>([^<>]+)</\\1>";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(line);
+    }
+
+    private static void findAndPrintXmlElementsUsingMatcher(Matcher matcher) {
+        int matchesFound = 0;
+        while(matcher.find())
+        {
+            System.out.println(matcher.group(2));
+            matchesFound++;
+        }
+
+        if(matchesFound == 0){
+            System.out.println("None");
         }
     }
 }

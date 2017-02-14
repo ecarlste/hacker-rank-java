@@ -9,7 +9,7 @@ public class Solution {
         while(testCases>0){
             String username = in.nextLine();
 
-            String pattern = "\\b([a-zA-Z])(\\w{7,29})\\b";
+            String pattern = "^[a-zA-Z]\\w{7,29}$";
 
             Pattern r = Pattern.compile(pattern);
             Matcher m = r.matcher(username);

@@ -34,16 +34,14 @@ public class Solution {
         return negativeSubarrayCount;
     }
 
-    static int getNegativeSubarrayCountBySubarraySize(int[] values, int subarraySize) {
-        int negativeSubarrayCount = 0;
+    private static int getNegativeSubarrayCountBySubarraySize(int[] values, int subarraySize) {
+        int negativeSubarrayCount;
         int maxStart = values.length - subarraySize;
 
-        for (int start = 0; start <= maxStart; start++) {
-            int[] subarray = Arrays.copyOfRange(values, start, start + subarraySize);
-            if (isNegativeSubarray(subarray)) {
-                negativeSubarrayCount++;
-            }
-        }
+        negativeSubarrayCount = (int) IntStream.rangeClosed(0, maxStart)
+                                               .mapToObj(start -> Arrays.copyOfRange(
+                                                       values, start, start + subarraySize))
+                                               .filter(Solution::isNegativeSubarray).count();
 
         return negativeSubarrayCount;
     }

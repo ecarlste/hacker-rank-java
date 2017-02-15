@@ -1,5 +1,5 @@
-import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class Solution {

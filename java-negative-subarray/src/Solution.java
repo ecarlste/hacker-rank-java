@@ -25,13 +25,9 @@ public class Solution {
     }
 
     static int getNegativeSubarrayCount(int[] values) {
-        int negativeSubarrayCount = 0;
-
-        for (int subarraySize = 1; subarraySize <= values.length; subarraySize++) {
-            negativeSubarrayCount += getNegativeSubarrayCountBySubarraySize(values, subarraySize);
-        }
-
-        return negativeSubarrayCount;
+        return IntStream.rangeClosed(1, values.length)
+                        .map(subarraySize -> getNegativeSubarrayCountBySubarraySize(values, subarraySize))
+                        .sum();
     }
 
     private static int getNegativeSubarrayCountBySubarraySize(int[] values, int subarraySize) {

@@ -13,6 +13,11 @@ class Solution{
         sc.close();
 
         //Write code here
+        Arrays.sort(s, 0, n, Collections.reverseOrder((firstString, secondString) -> {
+            BigDecimal firstBigDecimal = new BigDecimal(firstString);
+            BigDecimal secondBigDecimal = new BigDecimal(secondString);
+            return firstBigDecimal.compareTo(secondBigDecimal);
+        }));
 
         //Output
         for(int i=0;i<n;i++)

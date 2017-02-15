@@ -10,5 +10,38 @@ public class Solution {
                 arr[i][j] = in.nextInt();
             }
         }
+
+        System.out.println(findMaxHourglassSumFor2DArray(arr));
+    }
+
+    static int findMaxHourglassSumFor2DArray(int[][] array) {
+        int maxHourglassSum = 0;
+
+        for (int row = 1; row < array.length - 1; row++) {
+            for (int column = 1; column < array.length - 1; column++) {
+                maxHourglassSum = setMaxHourglassSumIfCurrentSumLarger(array, maxHourglassSum, row, column);
+            }
+        }
+
+        return maxHourglassSum;
+    }
+
+    private static int setMaxHourglassSumIfCurrentSumLarger(int[][] array, int maxHourglassSum, int row, int column) {
+        int hourglassSum = getHourglassSumFor2DArrayByIndex(array, row, column);
+        if (hourglassSum > maxHourglassSum) {
+            maxHourglassSum = hourglassSum;
+        }
+        return maxHourglassSum;
+    }
+
+    static int getHourglassSumFor2DArrayByIndex(int[][] array, int row, int column) {
+        int hourglassSum = array[row][column];
+
+        for (int i = column - 1; i <= column + 1; i++) {
+            hourglassSum += array[row - 1][i];
+            hourglassSum += array[row + 1][i];
+        }
+
+        return hourglassSum;
     }
 }

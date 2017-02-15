@@ -15,7 +15,7 @@ public class Solution {
     }
 
     static int findMaxHourglassSumFor2DArray(int[][] array) {
-        int maxHourglassSum = 0;
+        int maxHourglassSum = Integer.MIN_VALUE;
 
         for (int row = 1; row < array.length - 1; row++) {
             for (int column = 1; column < array.length - 1; column++) {

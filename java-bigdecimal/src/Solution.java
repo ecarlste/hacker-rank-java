@@ -13,17 +13,19 @@ class Solution{
         sc.close();
 
         //Write code here
-        Arrays.sort(s, 0, n, Collections.reverseOrder((firstString, secondString) -> {
-            BigDecimal firstBigDecimal = new BigDecimal(firstString);
-            BigDecimal secondBigDecimal = new BigDecimal(secondString);
-            return firstBigDecimal.compareTo(secondBigDecimal);
-        }));
+        Arrays.sort(s, 0, n, Collections.reverseOrder(Solution::compareStringsByBigDecimalValue));
 
         //Output
         for(int i=0;i<n;i++)
         {
             System.out.println(s[i]);
         }
+    }
+
+    private static int compareStringsByBigDecimalValue(String firstString, String secondString) {
+        BigDecimal firstBigDecimal = new BigDecimal(firstString);
+        BigDecimal secondBigDecimal = new BigDecimal(secondString);
+        return firstBigDecimal.compareTo(secondBigDecimal);
     }
 
 }

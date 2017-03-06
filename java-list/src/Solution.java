@@ -13,16 +13,6 @@ public class Solution {
         outputListAsSpaceSeparatedElements(elements);
     }
 
-    private static void outputListAsSpaceSeparatedElements(List<Integer> elements) {
-        for (int i = 0; i < elements.size(); i++) {
-            if (i == 0) {
-                System.out.print(elements.get(i));
-            } else {
-                System.out.print(" " + elements.get(i));
-            }
-        }
-    }
-
     private static void performAllQueriesOnElementListFromScanner(List<Integer> elements, Scanner scanner) {
         int queryCount = scanner.nextInt();
 
@@ -74,6 +64,16 @@ public class Solution {
         }
 
         return elements;
+    }
+
+    private static void outputListAsSpaceSeparatedElements(List<Integer> elements) {
+        for (int i = 0; i < elements.size(); i++) {
+            if (i == 0) {
+                System.out.print(elements.get(i));
+            } else {
+                System.out.print(" " + elements.get(i));
+            }
+        }
     }
 
     private enum QueryType {

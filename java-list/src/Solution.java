@@ -1,8 +1,4 @@
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution {
 
@@ -10,6 +6,11 @@ public class Solution {
 
         Scanner scanner = new Scanner(System.in);
 
+        List<Integer> elements = buildElementListFromScanner(scanner);
+
+    }
+
+    private static List<Integer> buildElementListFromScanner(Scanner scanner) {
         int listElementCount = scanner.nextInt();
         List<Integer> elements = new ArrayList<>();
 
@@ -17,5 +18,6 @@ public class Solution {
             elements.add(scanner.nextInt());
         }
 
+        return elements;
     }
 }

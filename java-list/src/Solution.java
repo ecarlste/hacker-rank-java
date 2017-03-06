@@ -2,35 +2,34 @@ import java.util.*;
 
 public class Solution {
 
-    private enum QueryType {
-        INSERT("Insert"),
-        DELETE("Delete");
-
-        private final String name;
-
-        QueryType(String name) {
-            this.name = name;
-        }
-    }
-
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         List<Integer> elements = buildElementListFromScanner(scanner);
+        performAllQueriesOnElementListFromScanner(elements, scanner);
 
-        elements = performAllQueriesOnElementListFromScanner(elements, scanner);
+        scanner.close();
 
+        outputListAsSpaceSeparatedElements(elements);
     }
 
-    private static List<Integer> performAllQueriesOnElementListFromScanner(List<Integer> elements, Scanner scanner) {
+    private static void outputListAsSpaceSeparatedElements(List<Integer> elements) {
+        for (int i = 0; i < elements.size(); i++) {
+            if (i == 0) {
+                System.out.print(elements.get(i));
+            } else {
+                System.out.print(" " + elements.get(i));
+            }
+        }
+    }
+
+    private static void performAllQueriesOnElementListFromScanner(List<Integer> elements, Scanner scanner) {
         int queryCount = scanner.nextInt();
 
         for (int i = 0; i < queryCount; i++) {
             QueryType queryType = getQueryTypeFromScanner(scanner);
+            performQueryOnListByTypeFromScanner(elements, queryType, scanner);
         }
-
-        return null;
     }
 
     private static QueryType getQueryTypeFromScanner(Scanner scanner) {
@@ -46,6 +45,26 @@ public class Solution {
         return queryType;
     }
 
+    private static void performQueryOnListByTypeFromScanner(List<Integer> elements, QueryType queryType,
+                                                                     Scanner scanner) {
+        if (queryType == QueryType.INSERT) {
+            performInsertOnListFromScanner(elements, scanner);
+        } else {
+            performDeleteOnListFromScanner(elements, scanner);
+        }
+    }
+
+    private static void performInsertOnListFromScanner(List<Integer> elements, Scanner scanner) {
+        int insertIndex = scanner.nextInt();
+        int insertElement = scanner.nextInt();
+        elements.add(insertIndex, insertElement);
+    }
+
+    private static void performDeleteOnListFromScanner(List<Integer> elements, Scanner scanner) {
+        int deleteIndex = scanner.nextInt();
+        elements.remove(deleteIndex);
+    }
+
     private static List<Integer> buildElementListFromScanner(Scanner scanner) {
         int listElementCount = scanner.nextInt();
         List<Integer> elements = new ArrayList<>();
@@ -56,4 +75,9 @@ public class Solution {
 
         return elements;
     }
+
+    private enum QueryType {
+        INSERT, DELETE
+    }
+
 }

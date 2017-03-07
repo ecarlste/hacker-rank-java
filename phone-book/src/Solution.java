@@ -1,4 +1,3 @@
-import java.io.InputStream;
 import java.util.*;
 
 class Solution{
@@ -9,12 +8,29 @@ class Solution{
     public static void main(String []argh)
     {
         buildPhoneBookAndNamesToSearch();
+        searchForNamesInPhoneBookAndPrintResults();
+    }
+
+    private static void searchForNamesInPhoneBookAndPrintResults() {
+        for (String name : namesToSearch) {
+            outputPhoneBookSearchResultForName(name);
+        }
+    }
+
+    private static void outputPhoneBookSearchResultForName(String name) {
+        if (phoneBook.containsKey(name)) {
+            System.out.println(name + "=" + phoneBook.get(name));
+        } else {
+            System.out.println("Not found");
+        }
     }
 
     private static void buildPhoneBookAndNamesToSearch() {
         Scanner scanner = new Scanner(System.in);
+
         buildPhoneBookFromScanner(scanner);
         buildNamesToSearchFromScanner(scanner);
+
         scanner.close();
     }
 
@@ -29,13 +45,16 @@ class Solution{
     private static int scanPhoneBookEntryCount(Scanner scanner) {
         int phoneBookEntryCount = scanner.nextInt();
         scanner.nextLine();
+
         return phoneBookEntryCount;
     }
 
     private static void scanNameAndNumberAddToPhoneBook(Scanner scanner) {
         String name = scanner.nextLine();
+
         int phoneNumber = scanner.nextInt();
         scanner.nextLine();
+
         phoneBook.put(name, phoneNumber);
     }
 

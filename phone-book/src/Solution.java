@@ -1,12 +1,11 @@
 import java.util.*;
 
-class Solution{
+class Solution {
 
     private static Map<String, Integer> phoneBook = new HashMap<>();
     private static List<String> namesToSearch = new ArrayList<>();
 
-    public static void main(String []argh)
-    {
+    public static void main(String []argh) {
         buildPhoneBookAndNamesToSearch();
         searchForNamesInPhoneBookAndPrintResults();
     }

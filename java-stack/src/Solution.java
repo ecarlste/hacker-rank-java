@@ -54,11 +54,16 @@ class Solution {
             }
 
             if (isClosingToken(token)) {
-                InputTokenType lastOpeningToken = tokenTypeStack.pop();
+                try {
+                    InputTokenType lastOpeningToken = tokenTypeStack.pop();
 
-                if (tokenType != lastOpeningToken) {
+                    if (tokenType != lastOpeningToken) {
+                        return false;
+                    }
+                } catch (EmptyStackException exception) {
                     return false;
                 }
+
             }
         }
 

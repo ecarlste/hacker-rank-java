@@ -63,7 +63,6 @@ class Solution {
                 } catch (EmptyStackException exception) {
                     return false;
                 }
-
             }
         }
 

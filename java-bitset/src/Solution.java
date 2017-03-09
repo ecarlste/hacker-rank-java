@@ -64,21 +64,21 @@ public class Solution {
         private int arg1;
         private int arg2;
 
-        public BinaryOperation(String binaryOperationType, int arg1, int arg2) {
+        BinaryOperation(String binaryOperationType, int arg1, int arg2) {
             this.binaryOperationType = binaryOperationType;
             this.arg1 = arg1;
             this.arg2 = arg2;
         }
 
-        public String getBinaryOperationType() {
+        String getBinaryOperationType() {
             return binaryOperationType;
         }
 
-        public int getArg1() {
+        int getArg1() {
             return arg1;
         }
 
-        public int getArg2() {
+        int getArg2() {
             return arg2;
         }
 
